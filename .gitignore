@@ -7,7 +7,7 @@ data/output_videos_uniform/
 data/results_backup/
 data/results_coco/
 data/results_gun/
-data/results_backup/
+data/results-backup/
 data/samples/
 data/snapshots/
 data/test_images/
