@@ -1,0 +1,13 @@
+__pycache__/
+data/data/
+data/coco_val2017/
+data/images_gun/
+data/output_videos/
+data/output_videos_uniform/
+data/results_backup/
+data/results_coco/
+data/results_gun/
+data/results_backup/
+data/samples/
+data/snapshots/
+data/test_images/
