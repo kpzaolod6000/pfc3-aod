@@ -7,11 +7,11 @@ import os
 import argparse
 import dataloader
 import net
+import netbest
 from torchvision import transforms
 from pytorch_msssim import MS_SSIM
 import torch.nn.functional as F
 from torchvision.transforms import functional as TF
-
 
 
 def weights_init(m):
@@ -92,7 +92,7 @@ def train(config):
     cudnn.benchmark = True  
     
     # Definir el modelo y aplicar la inicialización de pesos
-    dehaze_net = net.dehaze_net().cuda()
+    dehaze_net = netbest.PAODNet().cuda()
     dehaze_net.apply(weights_init)
 
     # Carga de datos (train y val)
@@ -131,6 +131,7 @@ def train(config):
         weight_decay=config.weight_decay
     )
 
+    # Pasamos el modelo a modo train
     dehaze_net.train()
 
     for epoch in range(config.num_epochs):
@@ -204,8 +205,8 @@ if __name__ == "__main__":
     parser.add_argument('--num_workers', type=int, default=4)
     parser.add_argument('--display_iter', type=int, default=10)
     parser.add_argument('--snapshot_iter', type=int, default=200)
-    parser.add_argument('--snapshots_folder', type=str, default="snapshots/NYU/MS_SSIM_L2_G")
-    parser.add_argument('--sample_output_folder', type=str, default="samples/NYU/MS_SSIM_L2_G")
+    parser.add_argument('--snapshots_folder', type=str, default="snapshots/NYU/MS_SSIM_L1")
+    parser.add_argument('--sample_output_folder', type=str, default="samples/NYU/MS_SSIM_L1")
     parser.add_argument('--loss_type', type=str, default="ms-ssim", 
                         choices=["ms-ssim", "ms-ssim+l1", "ms-ssim+l2", "l1", "l2"])
 
