@@ -43,15 +43,15 @@ def add_haze_advanced(image, beta, rho, A=1.0):
     return (hazy_image * 255).astype(np.uint8)
 
 # Configuración de carpetas
-input_folder = "test_images"  # Carpeta de imágenes de entrada
-output_folder = "results_coco"    # Carpeta para guardar imágenes con neblina
+input_folder = "/home/pytorch/data/results_gun/imagenes_selectivas/clean"  # Carpeta de imágenes de entrada
+output_folder = "results_test"    # Carpeta para guardar imágenes con neblina
 os.makedirs(output_folder, exist_ok=True)
 
 # Parámetros de neblina global
 rho = 1.0  # Profundidad uniforme
 beta_values = {
-    "light_haze": 0.4,
-    "medium_haze": 0.6,
+    "light_haze": 0.25,
+    "medium_haze": 0.50,
     "heavy_haze": 1.0
 }
 

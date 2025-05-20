@@ -29,9 +29,9 @@ def dehaze_image(image_path, model_path):
         clean_image = dehaze_net(data_hazy)
     
     # Crear carpeta 'results' si no existe
-    os.makedirs("results", exist_ok=True)
+    os.makedirs("/home/pytorch/data/results_gun/imagenes_selectivas/heavy_dehaze", exist_ok=True)
     # Guardar la imagen restaurada en la carpeta 'results'
-    nombre_salida = os.path.join("results", os.path.basename(image_path))
+    nombre_salida = os.path.join("/home/pytorch/data/results_gun/imagenes_selectivas/heavy_dehaze", os.path.basename(image_path))
     torchvision.utils.save_image(clean_image, nombre_salida)
 
     # Convertir de tensor [1,C,H,W] a NumPy [H,W,C]
